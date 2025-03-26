@@ -1,0 +1,110 @@
+/* Container for PDF viewer and Mark Assignment Panel */
+.pdf-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background: #b1cfff;
+}
+
+/* PDF Viewer - Left Side (60%) */
+#pdf {
+    flex: 0 0 60%;
+    height: 100vh;
+    overflow-y: auto;
+    border-right: 2px solid #e0e0e0;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for better feedback */
+#pdf:hover {
+    background-color: #f9fafb;
+}
+
+/* Modern PDF Toolbar with Gradient and Shadow */
+.pdf-toolbar {
+    background: linear-gradient(135deg, #007bff62, #00c8ff57);
+    color: rgb(85, 78, 78);
+    display: flex;
+    align-items: center;
+    padding: 8px 14px;
+    gap: 10px;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    margin-bottom: 12px;
+    height: fit-content;
+}
+
+/* PDF Controls (Buttons) - Modern Rounded Look */
+.pdf-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: rgb(80, 78, 78);
+    border: 2px solid rgba(0, 119, 255, 0.205);
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: fit-content;
+}
+
+/* Button Hover Effect */
+.pdf-button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+/* Button Active Effect */
+.pdf-button:active {
+    transform: scale(0.95);
+}
+
+/* Disabled Button Style */
+.pdf-button:disabled {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: rgba(59, 49, 49, 0.7);
+    cursor: not-allowed;
+}
+
+/* Page Info with Stylish Font */
+.pdf-page-info {
+    color: rgb(58, 49, 49);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+
+/* Scrollbar Customization */
+#pdf::-webkit-scrollbar,
+.right-panel::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+
+#pdf::-webkit-scrollbar-track,
+.right-panel::-webkit-scrollbar-track {
+    background-color: #e0e0e0;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 800px) {
+    .pdf-container {
+        flex-direction: column;
+    }
+
+    #pdf {
+        flex: 0 0 50vh;
+        border-right: none;
+        border-bottom: 2px solid #ccc;
+    }
+
+    .right-panel {
+        flex: 1;
+        border-radius: 0;
+    }
+}

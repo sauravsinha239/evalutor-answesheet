@@ -1,0 +1,100 @@
+/* Panel Container */
+.panel {
+    background: linear-gradient(145deg, #1e90ff, #00c9ff);
+    padding: 30px;
+    border-radius: 12px;
+    width: 400px;
+    margin: 40px auto;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    color: rgb(83, 76, 76);
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+
+    /* Vertical Scroll with Max Height */
+    max-height: 220px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+}
+
+/* Custom Scrollbar for Vertical Scroll */
+.panel::-webkit-scrollbar {
+    width: 10px;
+}
+
+.panel::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+.panel::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+}
+
+.panel::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+/* Heading Style */
+.panel h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    background: -webkit-linear-gradient(#575454, #747475);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Paragraph Style */
+.panel p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* List Container */
+.panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* List Item Design */
+.panel li {
+    background: rgba(255, 255, 255, 0.1);
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: rgb(46, 42, 42);
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* Total Marks Display */
+.total-marks {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #3f3b3b;
+    background-color: #007bff;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 8px 16px rgba(0, 123, 255, 0.2);
+}
+
+
+/* Hover Effect */
+.panel li:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+/* Responsive Design */
+@media (max-width: 450px) {
+    .panel {
+        width: 90%;
+    }
+}

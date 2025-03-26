@@ -1,48 +1,29 @@
 import React, { useState } from 'react';
+import './MarkAssignment.css';
 
 const MarkAssignment = ({ onMarkSubmit }) => {
-    const [questionNumber, setQuestionNumber] = useState('');
-    const [marks, setMarks] = useState('');
+    const [questionNumber, setQuestionNumber] = useState(1);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!questionNumber || !marks) {
-            alert('Please enter both question number and marks');
-            return;
-        }
-
-        // ✅ Check if the function exists before calling
+    const handleMarkClick = (mark) => {
         if (typeof onMarkSubmit === 'function') {
-            onMarkSubmit({ questionNumber, marks });
-            setQuestionNumber('');
-            setMarks('');
+            onMarkSubmit({ questionNumber, marks: mark });
+            setQuestionNumber((prev) => prev + 1); // Auto-increment question number
         } else {
             console.error('Error: onMarkSubmit is not a function');
         }
     };
 
     return (
-        <div>
+        <div className="mark-assignment-container">
             <h2>Mark Assignment Panel</h2>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Question Number:
-                    <input
-                        type="number"
-                        value={questionNumber}
-                        onChange={(e) => setQuestionNumber(e.target.value)}
-                    />
-                </label>
-                <label>
-                    Marks:
-                    <input
-                        type="number"
-                        value={marks}
-                        onChange={(e) => setMarks(e.target.value)}
-                    />
-                </label>
-                <button type="submit">Submit Marks</button>
-            </form>
+            <p>Question Number: {questionNumber}</p>
+            <div className="mark-buttons">
+                {[...Array(11).keys()].map((mark) => (
+                    <button key={mark} onClick={() => handleMarkClick(mark)}>
+                        {mark}
+                    </button>
+                ))}
+            </div>
         </div>
     );
 };

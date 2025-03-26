@@ -1,0 +1,75 @@
+/* Container Styling */
+.file-upload-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ea00ff;
+    border-radius: 22px;
+    padding: 10px;
+    width: fit-content;
+
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+    height: fit-content;
+}
+
+/* Hover Effect */
+.file-upload-container:hover {
+    background-color: #eef7ff;
+    border-color: #0056b3;
+}
+
+/* Heading Style */
+.file-upload-container h3 {
+    color: #007bff;
+    font-size: 14px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Input Type File Styling */
+input[type="file"] {
+    display: none;
+    /* Hide default input */
+}
+
+/* Custom Label to Style Input */
+.file-upload-label {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    font-size: 12px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border: none;
+    margin: 10px;
+}
+
+/* Hover and Active Effect */
+.file-upload-label:hover {
+    background-color: #0056b3;
+}
+
+.file-upload-label:active {
+    transform: scale(0.95);
+}
+
+/* Success or Error Feedback */
+.success-message {
+    color: #28a745;
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.error-message {
+    color: #dc3545;
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 500;
+}
