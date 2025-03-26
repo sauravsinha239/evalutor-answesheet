@@ -4,17 +4,16 @@
     padding: 30px;
     border-radius: 12px;
     width: 400px;
-    margin: 40px auto;
+    /* margin: 40px auto; */
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
     color: rgb(83, 76, 76);
     font-family: 'Segoe UI', sans-serif;
     text-align: center;
 
     /* Vertical Scroll with Max Height */
-    max-height: 220px;
+    max-height: 260px;
     overflow-y: auto;
     overflow-x: hidden;
-    /* Prevent horizontal scroll */
 }
 
 /* Custom Scrollbar for Vertical Scroll */
@@ -85,16 +84,54 @@
     box-shadow: 0 8px 16px rgba(0, 123, 255, 0.2);
 }
 
-
 /* Hover Effect */
 .panel li:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-5px);
 }
 
+/* Reset Section Styles */
+.reset-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.reset-section label {
+    font-size: 16px;
+    color: #3f3b3b;
+}
+
+select,
+button {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+select {
+    background-color: white;
+    color: #007bff;
+    border: 2px solid #007bff;
+}
+
 /* Responsive Design */
 @media (max-width: 450px) {
     .panel {
         width: 90%;
+    }
+
+    select,
+    button {
+        width: 100%;
     }
 }

@@ -2,14 +2,14 @@
 .pdf-container {
     display: flex;
     width: 100vw;
-    height: 100vh;
-    background: #b1cfff;
+    height: 130vh;
+    background: #fdfdfd;
 }
 
 /* PDF Viewer - Left Side (60%) */
 #pdf {
     flex: 0 0 60%;
-    height: 100vh;
+    height: 130vh;
     overflow-y: auto;
     border-right: 2px solid #e0e0e0;
     background-color: #ffffff;
@@ -71,7 +71,7 @@
 
 /* Page Info with Stylish Font */
 .pdf-page-info {
-    color: rgb(58, 49, 49);
+    color: rgb(255, 255, 255);
     font-weight: bold;
     font-size: 16px;
 }
