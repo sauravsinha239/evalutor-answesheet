@@ -12,14 +12,14 @@ mongoose.connect('mongodb+srv://sauravsinha1505:S4u84v239@saurav.xvykk.mongodb.n
   useUnifiedTopology: true,
 });
 
-// Create Schema and Model
+
 const markSchema = new mongoose.Schema({
   questionNumber: Number,
   marks: Number,
 });
 const Mark = mongoose.model('Mark', markSchema);
 
-// API Endpoint to Save Marks
+
 app.post('/api/marks', async (req, res) => {
   try {
     const { questionNumber, marks } = req.body;
@@ -31,7 +31,7 @@ app.post('/api/marks', async (req, res) => {
   }
 });
 
-// Start Server
+
 app.listen(3001, () => {
   console.log('Server running on http://localhost:3001');
 });

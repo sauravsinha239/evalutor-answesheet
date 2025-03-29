@@ -1,22 +1,21 @@
-/* Panel Container */
 .panel {
     background: linear-gradient(145deg, #1e90ff, #00c9ff);
     padding: 30px;
     border-radius: 12px;
     width: 400px;
-    /* margin: 40px auto; */
+
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
     color: rgb(83, 76, 76);
     font-family: 'Segoe UI', sans-serif;
     text-align: center;
 
-    /* Vertical Scroll with Max Height */
+
     max-height: 260px;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-/* Custom Scrollbar for Vertical Scroll */
+
 .panel::-webkit-scrollbar {
     width: 10px;
 }
@@ -35,7 +34,6 @@
     background: rgba(255, 255, 255, 0.7);
 }
 
-/* Heading Style */
 .panel h2 {
     font-size: 28px;
     margin-bottom: 20px;
@@ -44,20 +42,19 @@
     -webkit-text-fill-color: transparent;
 }
 
-/* Paragraph Style */
+
 .panel p {
     font-size: 18px;
     color: rgba(255, 255, 255, 0.8);
 }
 
-/* List Container */
+
 .panel ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-/* List Item Design */
 .panel li {
     background: rgba(255, 255, 255, 0.1);
     margin: 10px 0;
@@ -71,7 +68,7 @@
     transition: transform 0.3s ease, background 0.3s ease;
 }
 
-/* Total Marks Display */
+
 .total-marks {
     margin-top: 20px;
     font-size: 18px;
@@ -84,13 +81,13 @@
     box-shadow: 0 8px 16px rgba(0, 123, 255, 0.2);
 }
 
-/* Hover Effect */
+
 .panel li:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-5px);
 }
 
-/* Reset Section Styles */
+
 .reset-section {
     margin-top: 20px;
     text-align: center;
@@ -124,7 +121,7 @@ select {
     border: 2px solid #007bff;
 }
 
-/* Responsive Design */
+
 @media (max-width: 450px) {
     .panel {
         width: 90%;

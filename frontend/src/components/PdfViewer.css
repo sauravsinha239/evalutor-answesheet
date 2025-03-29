@@ -1,4 +1,3 @@
-/* Container for PDF viewer and Mark Assignment Panel */
 .pdf-container {
     display: flex;
     width: 100vw;
@@ -6,7 +5,7 @@
     background: #fdfdfd;
 }
 
-/* PDF Viewer - Left Side (60%) */
+
 #pdf {
     flex: 0 0 60%;
     height: 130vh;
@@ -17,12 +16,11 @@
     transition: background-color 0.3s ease;
 }
 
-/* Hover effect for better feedback */
 #pdf:hover {
     background-color: #f9fafb;
 }
 
-/* Modern PDF Toolbar with Gradient and Shadow */
+
 .pdf-toolbar {
     background: linear-gradient(135deg, #007bff62, #00c8ff57);
     color: rgb(85, 78, 78);
@@ -36,7 +34,6 @@
     height: fit-content;
 }
 
-/* PDF Controls (Buttons) - Modern Rounded Look */
 .pdf-button {
     background-color: rgba(255, 255, 255, 0.2);
     color: rgb(80, 78, 78);
@@ -50,18 +47,16 @@
     height: fit-content;
 }
 
-/* Button Hover Effect */
 .pdf-button:hover {
     background-color: rgba(255, 255, 255, 0.4);
     transform: scale(1.05);
 }
 
-/* Button Active Effect */
+
 .pdf-button:active {
     transform: scale(0.95);
 }
 
-/* Disabled Button Style */
 .pdf-button:disabled {
     background-color: rgba(255, 255, 255, 0.3);
     border: 2px solid rgba(255, 255, 255, 0.3);
@@ -69,7 +64,7 @@
     cursor: not-allowed;
 }
 
-/* Page Info with Stylish Font */
+
 .pdf-page-info {
     color: rgb(255, 255, 255);
     font-weight: bold;
@@ -78,7 +73,6 @@
 
 
 
-/* Scrollbar Customization */
 #pdf::-webkit-scrollbar,
 .right-panel::-webkit-scrollbar {
     width: 8px;
@@ -91,27 +85,6 @@
     background-color: #e0e0e0;
 }
 
-.comment-input-container {
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 5px;
-    z-index: 1000;
-    /* Ensure it's on top */
-}
-
-.comment-input-container textarea {
-    width: 200px;
-    height: 50px;
-}
-
-.comment-display {
-    background-color: yellow;
-    padding: 3px;
-    border: 1px solid black;
-    z-index: 999;
-}
-
-/* Responsive Design for Smaller Screens */
 @media (max-width: 800px) {
     .pdf-container {
         flex-direction: column;

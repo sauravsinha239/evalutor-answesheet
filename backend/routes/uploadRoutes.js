@@ -3,7 +3,7 @@ const multer = require('multer');
 const AnswerSheet = require('../models/AnswerSheet');
 const router = express.Router();
 
-// Configure multer
+
 const storage = multer.diskStorage({
     destination: 'uploads/',
     filename: (req, file, cb) => cb(null, Date.now() + '-' + file.originalname),
