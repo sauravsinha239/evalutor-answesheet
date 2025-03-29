@@ -102,8 +102,7 @@
 // };
 
 // export default PdfViewer;
-
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Viewer, Worker, SpecialZoomLevel } from '@react-pdf-viewer/core';
 import { zoomPlugin } from '@react-pdf-viewer/zoom';
 import * as pdfjs from 'pdfjs-dist';
@@ -113,41 +112,49 @@ import './PdfViewer.css';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
+const getPdfTotalPages = async (pdfUrl) => {
+    try {
+        const loadingTask = pdfjs.getDocument(pdfUrl);
+        const pdf = await loadingTask.promise;
+        return pdf.numPages;
+    } catch (error) {
+        console.error('Error loading PDF:', error);
+        return 0;
+    }
+};
+
 const PdfViewer = ({ pdfUrl }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [currentScale, setCurrentScale] = useState(1.0);
-
     const viewerRef = useRef(null);
     const zoomPluginInstance = zoomPlugin();
     const { zoomTo } = zoomPluginInstance;
+    const [key, setKey] = useState(0); // Add a key state
 
-    const onDocumentLoadSuccess = (pdf) => {
-        console.log('PDF Loaded Successfully');
-        setTotalPages(pdf.numPages);
-        setCurrentPage(1); // Reset to first page on load
-    };
+    useEffect(() => {
+        if (pdfUrl) {
+            getPdfTotalPages(pdfUrl).then((numPages) => {
+                setTotalPages(numPages);
+                setCurrentPage(1);
+            });
+        }
+    }, [pdfUrl]);
 
-    const onDocumentLoadError = (error) => {
-        console.error('Error loading PDF:', error);
-    };
-
-    // ✅ Page Navigation
     const handlePrevious = () => {
         if (currentPage > 1) {
-            setCurrentPage((prevPage) => prevPage - 1);
-            viewerRef.current?.jumpToPage(currentPage - 2); // 0-based
+            setCurrentPage((prevPage) => prevPage - 1); // Corrected
+            setKey((prevKey) => prevKey - 1);
         }
     };
 
     const handleNext = () => {
         if (currentPage < totalPages) {
-            setCurrentPage((prevPage) => prevPage + 1);
-            viewerRef.current?.jumpToPage(currentPage); // 0-based
+            setCurrentPage((prevPage) => prevPage + 1); // Corrected
+            setKey((prevKey) => prevKey + 1);
         }
     };
 
-    // ✅ Zoom Controls
     const handleZoomIn = () => {
         const newScale = Math.min(currentScale + 0.1, 3.0);
         setCurrentScale(newScale);
@@ -169,20 +176,16 @@ const PdfViewer = ({ pdfUrl }) => {
     };
 
     if (!pdfUrl) {
-        return <div>Please upload a PDF to view it here.</div>;
+        return <div>Error: Please upload a valid PDF to view it here.</div>;
     }
 
     return (
         <div className="pdf-container">
             <div id="pdf">
                 <div className="pdf-toolbar">
-                    <button className="pdf-button" onClick={handlePrevious} disabled={currentPage === 1}>
-                        Previous
-                    </button>
+                    <button className="pdf-button" onClick={handlePrevious} disabled={currentPage <= 1}>Previous</button>
                     <span className="pdf-page-info">Page {currentPage} of {totalPages}</span>
-                    <button className="pdf-button" onClick={handleNext} disabled={currentPage === totalPages}>
-                        Next
-                    </button>
+                    <button className="pdf-button" onClick={handleNext} disabled={currentPage >= totalPages}>Next</button>
                     <button className="pdf-button" onClick={handleZoomOut}>-</button>
                     <span className="pdf-zoom-level">{Math.round(currentScale * 100)}%</span>
                     <button className="pdf-button" onClick={handleZoomIn}>+</button>
@@ -190,15 +193,14 @@ const PdfViewer = ({ pdfUrl }) => {
                     <button className="pdf-button" onClick={handleFitToPage}>Fit to Page</button>
                 </div>
 
-                {/* PDF Viewer */}
                 <Worker workerUrl={pdfjs.GlobalWorkerOptions.workerSrc}>
                     <Viewer
-                        ref={viewerRef}
+                        key={key}
                         fileUrl={pdfUrl}
-                        onDocumentLoadSuccess={onDocumentLoadSuccess}
-                        onDocumentLoadError={onDocumentLoadError}
+                        ref={viewerRef}
                         plugins={[zoomPluginInstance]}
-                        initialPage={currentPage - 1}
+                        defaultScale={SpecialZoomLevel.PageFit}
+                        initialPage={currentPage}
                     />
                 </Worker>
             </div>
@@ -207,4 +209,3 @@ const PdfViewer = ({ pdfUrl }) => {
 };
 
 export default PdfViewer;
-
