@@ -91,6 +91,26 @@
     background-color: #e0e0e0;
 }
 
+.comment-input-container {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5px;
+    z-index: 1000;
+    /* Ensure it's on top */
+}
+
+.comment-input-container textarea {
+    width: 200px;
+    height: 50px;
+}
+
+.comment-display {
+    background-color: yellow;
+    padding: 3px;
+    border: 1px solid black;
+    z-index: 999;
+}
+
 /* Responsive Design for Smaller Screens */
 @media (max-width: 800px) {
     .pdf-container {
